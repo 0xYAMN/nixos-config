@@ -1,0 +1,168 @@
+* {
+  font-family: "Hack Nerd Font", monospace;
+  font-size: 13px;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+window#waybar {
+  background: transparent;
+  color: #cdd6f4;
+}
+
+/* Island backgrounds */
+.modules-left,
+.modules-center,
+.modules-right {
+  background: #1e1e2e;
+  border-radius: 13px;
+  padding: 0 4px;
+}
+
+/* Workspaces */
+#workspaces {
+  background: transparent;
+  padding: 0 2px;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  color: #585b70;
+  background: transparent;
+  transition: color 0.2s ease;
+  min-width: 20px;
+  min-height: 26px;
+}
+
+#workspaces button:hover {
+  color: #bac2de;
+}
+
+#workspaces button.active {
+  color: #cba6f7;
+  font-size: 15px;
+}
+
+#workspaces button.urgent {
+  color: #f38ba8;
+}
+
+/* Clock */
+#clock {
+  background: transparent;
+  padding: 0 16px;
+  color: #89b4fa;
+  font-weight: bold;
+}
+
+/* Right modules */
+#cpu {
+  background: transparent;
+  padding: 0 12px;
+  color: #fab387;
+}
+
+#temperature {
+  background: transparent;
+  padding: 0 12px;
+  color: #f9e2af;
+}
+
+#temperature.critical {
+  color: #f38ba8;
+}
+
+#memory {
+  background: transparent;
+  padding: 0 12px;
+  color: #74c7ec;
+}
+
+#bluetooth {
+  background: transparent;
+  padding: 0 12px;
+  color: #89b4fa;
+}
+
+#bluetooth.disabled {
+  color: #585b70;
+}
+
+#backlight {
+  background: transparent;
+  padding: 0 12px;
+  color: #f9e2af;
+}
+
+#pulseaudio {
+  background: transparent;
+  padding: 0 12px;
+  color: #cba6f7;
+}
+
+#pulseaudio.muted {
+  color: #585b70;
+}
+
+#network {
+  background: transparent;
+  padding: 0 12px;
+  color: #89dceb;
+}
+
+#network.disconnected {
+  color: #585b70;
+}
+
+#battery {
+  background: transparent;
+  padding: 0 12px;
+  color: #a6e3a1;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+  color: #f9e2af;
+}
+
+#battery.critical:not(.charging) {
+  color: #f38ba8;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  from { opacity: 1; }
+  50%  { opacity: 0.5; }
+  to   { opacity: 1; }
+}
+
+#tray {
+  background: transparent;
+  padding: 0 10px;
+}
+
+#custom-logout {
+  background: transparent;
+  padding: 0 12px;
+  color: #f38ba8;
+}
+
+#custom-logout:hover {
+  color: #eba0ac;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #313244;
+  border-radius: 8px;
+}

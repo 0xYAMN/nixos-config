@@ -1,0 +1,58 @@
+/* ── Window ─────────────────────────────────────────────────────────────── */
+window {
+  background-color: transparent;
+  font-family:      "Hack Nerd Font", monospace;
+  font-size:        14px;
+  color:            #cdd6f4;
+}
+
+#outer-box {
+  background-color: #1e1e2e;
+  border:           1px solid #cba6f7;
+  border-radius:    12px;
+}
+
+/* ── Search bar ─────────────────────────────────────────────────────────── */
+#input {
+  background-color: #313244;
+  color:            #cdd6f4;
+  border:           1px solid #45475a;
+  border-radius:    8px;
+  padding:          8px 12px;
+  margin:           8px;
+  outline:          none;
+}
+
+#input:focus {
+  border-color: #cba6f7;
+}
+
+/* ── Scrollable list ────────────────────────────────────────────────────── */
+#scroll {
+  margin: 0 8px 8px 8px;
+}
+
+/* ── Each entry row ─────────────────────────────────────────────────────── */
+#entry {
+  border-radius: 8px;
+  padding:       6px 10px;
+  margin:        2px 0;
+}
+
+#entry:selected {
+  background-color: #313244;
+}
+
+/* ── Entry text ─────────────────────────────────────────────────────────── */
+#text {
+  color: #cdd6f4;
+}
+
+#entry:selected #text {
+  color: #cba6f7;
+}
+
+/* ── App icons ──────────────────────────────────────────────────────────── */
+#img {
+  margin-right: 8px;
+}
