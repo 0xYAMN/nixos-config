@@ -33,16 +33,16 @@
       }
     ];
   in {
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.prometheus = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit catppuccin; pkgsUnstable = unstablePkgs "x86_64-linux"; };
-      modules = sharedModules "laptop" "x86_64-linux";
+      modules = sharedModules "prometheus" "x86_64-linux";
     };
 
-    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.thoth = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit catppuccin; pkgsUnstable = unstablePkgs "x86_64-linux"; };
-      modules = sharedModules "desktop" "x86_64-linux";
+      modules = sharedModules "thoth" "x86_64-linux";
     };
     
     homeManagerModules.default = ./homeManagerModules/default.nix;
