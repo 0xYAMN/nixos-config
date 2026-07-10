@@ -4,7 +4,7 @@
   config = lib.mkIf config.modules.tmux.enable {
     programs.tmux = {
       enable = true;
-      extraConfig = builtins.readFile ../tmux.conf;
+      extraConfig = builtins.readFile ./tmux.conf;
     };
   };
 }
