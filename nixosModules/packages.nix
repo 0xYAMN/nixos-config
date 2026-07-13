@@ -19,7 +19,6 @@
       nautilus
       localsend
       slack
-      spotify
       _1password-gui
       vlc
       webex

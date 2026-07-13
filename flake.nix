@@ -14,9 +14,14 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, spicetify-nix, ... }:
   let
     unstablePkgs = system: import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
     sharedModules = host: system: [
@@ -26,8 +31,10 @@
       {
         home-manager.useGlobalPkgs   = true;
         home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit spicetify-nix; };
         home-manager.sharedModules   = [
           catppuccin.homeModules.catppuccin
+          spicetify-nix.homeManagerModules.spicetify
           ./homeManagerModules/default.nix
         ];
       }

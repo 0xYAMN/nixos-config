@@ -19,5 +19,6 @@
     ./hypridle.nix
     ./clipboard.nix
     ./wlogout.nix
+    ./spotify.nix
   ];
 }
