@@ -14,6 +14,7 @@
         "nixc" = "cd /home/yamn/nixos-config";
         "dev" = "cd /home/yamn/DEV";
         "trdp" = "cd /home/yamn/DEV/IFS/trdp_abstraction_layer";
+	      "sbrc" = "source ~/.bashrc";      
       };
 
       initExtra = ''
