@@ -7,6 +7,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # ── Storage ──────────────────────────────────────────────────────────────
+  services.fstrim.enable = true;
+
   # ── Networking ────────────────────────────────────────────────────────────
   networking.hostName = "nixos";
 
