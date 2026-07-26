@@ -4,6 +4,7 @@
   config = lib.mkIf config.modules.theme.enable {
     catppuccin = {
       enable = true;
+      autoEnable = true;
       flavor = "macchiato";
       accent = "mauve";
       hyprland.enable = true;
