@@ -5,7 +5,7 @@
     catppuccin = {
       enable = true;
       autoEnable = true;
-      flavor = "macchiato";
+      flavor = "mocha";
       accent = "mauve";
       hyprland.enable = true;
       hyprlock.enable = false;
@@ -14,7 +14,7 @@
         enable = true;
         accent = "mauve";
         force = true;
-        flavor = "macchiato";
+        flavor = "mocha";
       };
 
       kitty = {
@@ -27,7 +27,7 @@
     # Cursor theme — matches catppuccin macchiato/mauve setup
     home.pointerCursor = {
       package = pkgs.catppuccin-cursors.macchiatoMauve;
-      name    = "catppuccin-macchiato-mauve-cursors";
+      name    = "catppuccin-mocha-mauve-cursors";
       size    = 24;
       gtk.enable = true;   # also applies cursor to GTK apps
     };
