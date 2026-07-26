@@ -41,6 +41,7 @@
   modules.clipboard.enable   = true;
   modules.wlogout.enable     = true;
   modules.spotify.enable     = true;
+  modules.direnv.enable      = true;
 
   home.stateVersion = "25.11";
 }

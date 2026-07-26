@@ -20,5 +20,6 @@
     ./clipboard.nix
     ./wlogout.nix
     ./spotify.nix
+    ./direnv.nix
   ];
 }
