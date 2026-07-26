@@ -2,6 +2,8 @@
   options.modules.packages.enable = lib.mkEnableOption "base system packages";
 
   config = lib.mkIf config.modules.packages.enable {
+    programs.wireshark.enable = true;
+    programs.wireshark.package = pkgs.wireshark;
     programs.firefox.enable = true;
 
     programs.firefox.policies.ExtensionSettings = {

@@ -42,7 +42,7 @@
   users.users.yamn = {
     isNormalUser = true;
     description  = "Yannick Monjeamb";
-    extraGroups  = [ "wheel" "networkmanager" "video" "audio" "docker" ];
+    extraGroups  = [ "wheel" "networkmanager" "video" "audio" "docker" "wireshark"];
     initialPassword = "changeme";
   };
 
