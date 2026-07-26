@@ -45,6 +45,7 @@
       gnumake
       pkg-config
       cava
+      yazi
 
       # docker
       docker-compose
