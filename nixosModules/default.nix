@@ -1,8 +1,6 @@
 { ... }: {
   imports = [
-    ./audio.nix
-    ./bluetooth.nix
-    ./display.nix
+    ./hardware
     ./networking.nix
     ./virtualisation.nix
     ./packages
