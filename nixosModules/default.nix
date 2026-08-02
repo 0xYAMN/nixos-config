@@ -5,6 +5,6 @@
     ./display.nix
     ./networking.nix
     ./virtualisation.nix
-    ./packages.nix
+    ./packages
   ];
 }
