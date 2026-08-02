@@ -35,7 +35,7 @@
         home-manager.sharedModules   = [
           catppuccin.homeModules.catppuccin
           spicetify-nix.homeManagerModules.spicetify
-          ./homeManagerModules/default.nix
+          ./homeModules/default.nix
         ];
       }
     ];
@@ -52,7 +52,7 @@
       modules = sharedModules "thoth" "x86_64-linux";
     };
     
-    homeManagerModules.default = ./homeManagerModules/default.nix;
-    nixosModules.default       = ./nixosModules/default.nix;
+    homeModules.default   = ./homeModules/default.nix;
+    nixosModules.default  = ./nixosModules/default.nix;
   };
 }
