@@ -59,6 +59,7 @@
   modules.bluetooth.enable      = true;
   modules.display.enable        = true;
   modules.networking.enable     = true;
+  modules.nix.enable            = true;
   modules.virtualisation.enable = true;
   modules.packages.enable       = true;
 
