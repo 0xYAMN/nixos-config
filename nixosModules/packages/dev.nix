@@ -9,6 +9,7 @@
       binutils
       docker-compose
       can-utils
+      foxglove-studio
       pkgsUnstable.claude-code
     ];
   };
