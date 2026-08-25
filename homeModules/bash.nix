@@ -45,6 +45,14 @@
           exec tmux new-session -A -s "kitty-$KITTY_PID"
         fi
 
+        # ros2 tab completion
+        _ros2_argcomplete_maybe() {
+          command -v ros2 >/dev/null 2>&1 || return
+          complete -p ros2 >/dev/null 2>&1 && return
+          eval "$(register-python-argcomplete ros2 2>/dev/null)"
+        }
+        PROMPT_COMMAND="_ros2_argcomplete_maybe''${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+
       '';
     };
   };
