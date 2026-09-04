@@ -14,6 +14,7 @@
         gpg = {
           format = "ssh";
         };
+        credential.helper = "store";
       };
     };
   };
