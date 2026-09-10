@@ -5,8 +5,7 @@
     outputs = lib.mkOption {
       type = lib.types.listOf (lib.types.submodule {
         options = {
-          output     = lib.mkOption { type = lib.types.str; };
-          workspaces = lib.mkOption { type = lib.types.listOf lib.types.int; };
+          output = lib.mkOption { type = lib.types.str; };
         };
       });
       default = [];
@@ -103,17 +102,21 @@
           modules-right  = [ "cpu" "temperature" "memory" "backlight" "pulseaudio" "network" "battery" "tray" "custom/logout" ];
         } // commonModules;
 
-        workspaces = persistent: {
+        workspacesPerMonitor = 8;
+        maxMonitorsSupported = 8;
+        numberIcons = lib.listToAttrs (map (n: {
+          name  = toString n;
+          value = toString (lib.mod (n - 1) workspacesPerMonitor + 1);
+        }) (lib.range 1 (workspacesPerMonitor * maxMonitorsSupported)));
+
+        workspacesModule = {
           "hyprland/workspaces" = {
             format = "{icon}";
-            format-icons = {
-              "1" = "1"; "2" = "2"; "3" = "3"; "4" = "4"; "5" = "5";
-              "6" = "6"; "7" = "7"; "8" = "8"; "9" = "9";
+            format-icons = numberIcons // {
               active = "󰮯";
               urgent = "󰀦";
             };
             on-click = "activate";
-            persistent-workspaces = persistent;
           };
         };
       in
@@ -121,7 +124,7 @@
       enable = true;
 
       settings = map (o:
-        commonBar // { output = o.output; } // workspaces { ${o.output} = o.workspaces; }
+        commonBar // { output = o.output; } // workspacesModule
       ) config.modules.waybar.outputs;
 
       style = builtins.readFile ./waybar.css;

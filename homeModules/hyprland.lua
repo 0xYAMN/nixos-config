@@ -42,6 +42,7 @@ hl.config({
   input = {
     sensitivity   = -0.1,
     accel_profile = "flat",
+    kb_options    = "caps:super", -- Caps Lock doubles as an extra Super/Win key
   },
 })
 
@@ -111,13 +112,9 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" 
 hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 
--- Workspaces 1–9
--- SUPER+N        → switch to workspace N
--- SUPER+SHIFT+N  → move focused window to workspace N (stay on current workspace)
--- SUPER+CTRL+N   → move focused window to workspace N AND follow it there
 for i = 1, 8 do
   local key = tostring(i)
-  hl.bind(mainMod .. " + " .. key,              hl.dsp.focus({ workspace = i }))
-  hl.bind(mainMod .. " + SHIFT + " .. key,      hl.dsp.window.move({ workspace = i }))
-  hl.bind(mainMod .. " + CTRL + " .. key,       hl.dsp.window.move({ workspace = i, follow = true }))
+  hl.bind(mainMod .. " + " .. key,         hl.dsp.exec_cmd("hypr-workspace " .. i .. " focus"))
+  hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.exec_cmd("hypr-workspace " .. i .. " movesilent"))
+  hl.bind(mainMod .. " + CTRL + " .. key,  hl.dsp.exec_cmd("hypr-workspace " .. i .. " movefollow"))
 end

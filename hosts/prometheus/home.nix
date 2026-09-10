@@ -15,7 +15,7 @@
   modules.hyprpaper.enable  = true;
   modules.waybar.enable     = true;
   modules.waybar.outputs    = [
-    { output = "eDP-1"; workspaces = [ 1 2 3 4 5 6 7 8 ]; }
+    { output = "eDP-1"; }
   ];
   modules.wofi.enable       = true;
   modules.mako.enable       = true;

@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   options.modules.hyprland = {
     enable = lib.mkEnableOption "hyprland window manager";
 
@@ -26,6 +26,27 @@
   };
 
   config = lib.mkIf config.modules.hyprland.enable {
+    home.packages = [
+      pkgs.jq
+      (pkgs.writeShellScriptBin "hypr-workspace" ''
+        set -euo pipefail
+        NUM_WORKSPACES=8
+
+        local_ws="$1"
+        mode="$2"
+
+        monitor_id=$(${pkgs.hyprland}/bin/hyprctl monitors -j | ${pkgs.jq}/bin/jq '[.[] | select(.focused == true)][0].id')
+        global_ws=$(( monitor_id * NUM_WORKSPACES + local_ws ))
+
+        case "$mode" in
+          focus)      ${pkgs.hyprland}/bin/hyprctl dispatch "hl.dsp.focus({workspace=$global_ws})" ;;
+          movesilent) ${pkgs.hyprland}/bin/hyprctl dispatch "hl.dsp.window.move({workspace=$global_ws})" ;;
+          movefollow) ${pkgs.hyprland}/bin/hyprctl dispatch "hl.dsp.window.move({workspace=$global_ws, follow=true})" ;;
+          *) echo "hypr-workspace: unknown mode '$mode'" >&2; exit 1 ;;
+        esac
+      '')
+    ];
+
     wayland.windowManager.hyprland = {
       enable = true;
 
