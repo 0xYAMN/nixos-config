@@ -20,6 +20,7 @@
       pkgsUnstable.claude-code
       python3
       go
+      lmstudio
     ];
   };
 }
