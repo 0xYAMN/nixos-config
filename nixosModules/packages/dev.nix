@@ -21,6 +21,9 @@
       python3
       go
       lmstudio
+      savvycan
+      glab
+      gh
     ];
   };
 }

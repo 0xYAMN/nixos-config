@@ -1,5 +1,9 @@
 { pkgs, lib, config, ... }: {
   config = lib.mkIf config.modules.packages.enable {
+    # LocalSend
+    networking.firewall.allowedTCPPorts = [ 53317 ];
+    networking.firewall.allowedUDPPorts = [ 53317 ];
+
     programs.firefox.enable = true;
 
     programs.firefox.policies.ExtensionSettings = {
