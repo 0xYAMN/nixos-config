@@ -1,3 +1,6 @@
+@define-color accent #89b4fa;
+@define-color accent-active #cba6f7;
+
 * {
   font-family: "Hack Nerd Font", monospace;
   font-size: 13px;
@@ -7,53 +10,63 @@
   box-shadow: none;
 }
 
+/* Single frosted-glass pill for the whole bar */
 window#waybar {
-  background: transparent;
+  background: rgba(17, 17, 27, 0.62);
   color: #cdd6f4;
+  border: 1px solid alpha(@accent, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 0 14px 1px alpha(@accent, 0.35),
+              inset 0 0 24px alpha(@accent, 0.06);
 }
 
-/* Island backgrounds */
+/* No separate island backgrounds anymore, everything lives in one pill */
 .modules-left,
 .modules-center,
 .modules-right {
-  background: #1e1e2e;
-  border-radius: 13px;
+  background: transparent;
+  padding: 0 6px;
+}
+
+/* Workspaces: boxed numbers, active one filled solid */
+#workspaces {
+  background: transparent;
   padding: 0 4px;
 }
 
-/* Workspaces */
-#workspaces {
-  background: transparent;
-  padding: 0 2px;
-}
-
 #workspaces button {
-  padding: 0 5px;
-  color: #585b70;
-  background: transparent;
-  transition: color 0.2s ease;
+  padding: 0 7px;
+  margin: 4px 2px;
   min-width: 20px;
-  min-height: 26px;
+  min-height: 20px;
+  color: #6c7086;
+  background: alpha(#cdd6f4, 0.06);
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-  color: #bac2de;
+  color: #cdd6f4;
+  background: alpha(#cdd6f4, 0.12);
 }
 
 #workspaces button.active {
-  color: #cba6f7;
-  font-size: 15px;
+  color: #11111b;
+  background: @accent-active;
+  box-shadow: 0 0 8px alpha(@accent-active, 0.6);
 }
 
 #workspaces button.urgent {
-  color: #f38ba8;
+  color: #11111b;
+  background: #f38ba8;
 }
 
 /* Clock */
 #clock {
   background: transparent;
   padding: 0 16px;
-  color: #89b4fa;
+  color: @accent;
   font-weight: bold;
 }
 
@@ -148,13 +161,18 @@ window#waybar {
 }
 
 #custom-logout {
-  background: transparent;
-  padding: 0 12px;
+  background: alpha(#f38ba8, 0.12);
   color: #f38ba8;
+  padding: 0 9px;
+  margin: 4px 4px 4px 2px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 #custom-logout:hover {
-  color: #eba0ac;
+  background: #f38ba8;
+  color: #11111b;
+  box-shadow: 0 0 8px alpha(#f38ba8, 0.6);
 }
 
 #tray > .passive {

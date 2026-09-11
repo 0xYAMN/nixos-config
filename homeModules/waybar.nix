@@ -92,7 +92,7 @@
         commonBar = {
           layer    = "top";
           position = "top";
-          height   = 26;
+          height   = 32;
           spacing  = 0;
           margin-top = 8;
           margin-left = 12;
@@ -112,11 +112,11 @@
         workspacesModule = {
           "hyprland/workspaces" = {
             format = "{icon}";
-            format-icons = numberIcons // {
-              active = "󰮯";
-              urgent = "󰀦";
-            };
+            format-icons = numberIcons;
             on-click = "activate";
+            persistent-workspaces = {
+              "*" = workspacesPerMonitor;
+            };
           };
         };
       in

@@ -106,6 +106,10 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
+-- Monitor focus
+hl.bind(mainMod .. " + ALT + left",  hl.dsp.focus({ monitor = "-1" }))
+hl.bind(mainMod .. " + ALT + right", hl.dsp.focus({ monitor = "+1" }))
+
 -- Window movement (SUPER+SHIFT+arrows)
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
