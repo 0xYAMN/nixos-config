@@ -1,5 +1,20 @@
-@define-color accent #89b4fa;
-@define-color accent-active #cba6f7;
+/* Catppuccin Mocha */
+@define-color rosewater #f5e0dc;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color surface2 #585b70;
+
+@define-color accent @lavender;
+@define-color accent-active @mauve;
 
 * {
   font-family: "Hack Nerd Font", monospace;
@@ -10,14 +25,12 @@
   box-shadow: none;
 }
 
-/* Single frosted-glass pill for the whole bar */
+/* Flatter, more solid bar */
 window#waybar {
-  background: rgba(17, 17, 27, 0.62);
+  background: rgba(17, 17, 27, 0.92);
   color: #cdd6f4;
-  border: 1px solid alpha(@accent, 0.45);
-  border-radius: 18px;
-  box-shadow: 0 0 14px 1px alpha(@accent, 0.35),
-              inset 0 0 24px alpha(@accent, 0.06);
+  border: none;
+  border-radius: 0;
 }
 
 /* No separate island backgrounds anymore, everything lives in one pill */
@@ -36,30 +49,28 @@ window#waybar {
 
 #workspaces button {
   padding: 0 7px;
-  margin: 4px 2px;
+  margin: 0 2px;
   min-width: 20px;
   min-height: 20px;
   color: #6c7086;
-  background: alpha(#cdd6f4, 0.06);
-  border-radius: 8px;
+  background: transparent;
   font-weight: bold;
   transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-  color: #cdd6f4;
-  background: alpha(#cdd6f4, 0.12);
+  color: @text;
+  background: transparent;
 }
 
 #workspaces button.active {
-  color: #11111b;
-  background: @accent-active;
-  box-shadow: 0 0 8px alpha(@accent-active, 0.6);
+  color: @accent-active;
+  background: transparent;
 }
 
 #workspaces button.urgent {
-  color: #11111b;
-  background: #f38ba8;
+  color: @red;
+  background: transparent;
 }
 
 /* Clock */
@@ -74,78 +85,72 @@ window#waybar {
 #cpu {
   background: transparent;
   padding: 0 12px;
-  color: #fab387;
+  color: @yellow;
 }
 
 #temperature {
   background: transparent;
   padding: 0 12px;
-  color: #f9e2af;
+  color: @peach;
 }
 
 #temperature.critical {
-  color: #f38ba8;
+  color: @red;
 }
 
 #memory {
   background: transparent;
   padding: 0 12px;
-  color: #74c7ec;
+  color: @sapphire;
 }
 
 #bluetooth {
   background: transparent;
   padding: 0 12px;
-  color: #89b4fa;
+  color: @blue;
 }
 
 #bluetooth.disabled {
-  color: #585b70;
-}
-
-#backlight {
-  background: transparent;
-  padding: 0 12px;
-  color: #f9e2af;
+  color: @surface2;
 }
 
 #pulseaudio {
   background: transparent;
   padding: 0 12px;
-  color: #cba6f7;
+  color: @red;
 }
 
 #pulseaudio.muted {
-  color: #585b70;
+  color: @surface2;
 }
 
 #network {
   background: transparent;
   padding: 0 12px;
-  color: #89dceb;
+  color: @teal;
 }
 
 #network.disconnected {
-  color: #585b70;
+  color: @surface2;
 }
 
 #battery {
   background: transparent;
   padding: 0 12px;
-  color: #a6e3a1;
+  color: @green;
 }
 
 #battery.charging,
 #battery.plugged {
-  color: #a6e3a1;
+  color: @green;
 }
 
 #battery.warning:not(.charging) {
-  color: #f9e2af;
+  color: @yellow;
 }
 
 #battery.critical:not(.charging) {
-  color: #f38ba8;
+  color: @red;
   animation: pulse 1.5s ease-in-out infinite;
 }
 
@@ -161,18 +166,19 @@ window#waybar {
 }
 
 #custom-logout {
-  background: alpha(#f38ba8, 0.12);
-  color: #f38ba8;
-  padding: 0 9px;
-  margin: 4px 4px 4px 2px;
-  border-radius: 8px;
+  color: @red;
+  background: transparent;
+  min-width: 22px;
+  min-height: 22px;
+  margin: 5px 10px 5px 6px;
+  border-radius: 50%;
+  font-size: 13px;
   transition: all 0.2s ease;
 }
 
 #custom-logout:hover {
-  background: #f38ba8;
+  background: @red;
   color: #11111b;
-  box-shadow: 0 0 8px alpha(#f38ba8, 0.6);
 }
 
 #tray > .passive {
@@ -182,5 +188,5 @@ window#waybar {
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
   background-color: #313244;
-  border-radius: 8px;
+  border-radius: 4px;
 }

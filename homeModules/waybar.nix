@@ -41,20 +41,21 @@
           };
 
           cpu = {
-            format = "󰻠  {usage}%";
+            format = "CPU {usage}%";
             interval = 2;
             tooltip = false;
           };
 
           temperature = {
-            format = "󰔏  {temperatureC}°C";
-            format-critical = "󰔏  {temperatureC}°C";
+            hwmon-path = "/sys/class/hwmon/hwmon4/temp1_input";
+            format = "TEMP {temperatureC}°C";
+            format-critical = "TEMP {temperatureC}°C";
             critical-threshold = 80;
             tooltip = false;
           };
 
           memory = {
-            format = "󰍛  {percentage}%";
+            format = "RAM {used:0.1f}GB";
             interval = 2;
             tooltip = false;
           };
@@ -69,21 +70,13 @@
             tooltip = false;
           };
 
-          backlight = {
-            format = "{icon}  {percent}%";
-            format-icons = [ "󰃞" "󰃟" "󰃠" ];
-            on-scroll-up = "swayosd-client --brightness raise";
-            on-scroll-down = "swayosd-client --brightness lower";
-            tooltip = false;
-          };
-
           tray = {
             spacing = 8;
             icon-size = 16;
           };
 
           "custom/logout" = {
-            format = "󰗼";
+            format = "󰐥";
             on-click = "wlogout";
             tooltip = false;
           };
@@ -94,12 +87,12 @@
           position = "top";
           height   = 32;
           spacing  = 0;
-          margin-top = 8;
-          margin-left = 12;
-          margin-right = 12;
+          margin-top = 0;
+          margin-left = 0;
+          margin-right = 0;
           modules-left   = [ "hyprland/workspaces" ];
           modules-center = [ "clock" ];
-          modules-right  = [ "cpu" "temperature" "memory" "backlight" "pulseaudio" "network" "battery" "tray" "custom/logout" ];
+          modules-right  = [ "cpu" "temperature" "memory" "pulseaudio" "network" "battery" "tray" "custom/logout" ];
         } // commonModules;
 
         workspacesPerMonitor = 8;
