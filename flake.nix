@@ -19,11 +19,17 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-matlab = {
+      url = "github:0xYAMN/nix-matlab";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, spicetify-nix, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, spicetify-nix, nix-matlab, ... }:
   let
     unstablePkgs = system: import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+
     sharedModules = host: system: [
       ./hosts/${host}/configuration.nix
       ./nixosModules/default.nix
@@ -49,7 +55,9 @@
     nixosConfigurations.thoth = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit catppuccin; pkgsUnstable = unstablePkgs "x86_64-linux"; };
-      modules = sharedModules "thoth" "x86_64-linux";
+      modules = sharedModules "thoth" "x86_64-linux" ++ [
+        { nixpkgs.overlays = [ nix-matlab.overlay ]; }
+      ];
     };
     
     homeModules.default   = ./homeModules/default.nix;
