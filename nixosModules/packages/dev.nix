@@ -5,6 +5,8 @@
       libusb-compat-0_1   # for tool-teensy's teensy_loader_cli_bin
       zstd                # for the arm-none-eabi gcc toolchain (libzstd.so.1)
       libudev-zero        # for tool-teensy's teensy_reboot (libudev.so.1)
+      stdenv.cc.cc.lib
+      zlib
     ];
     services.udev.packages = [ pkgs.teensy-udev-rules ];
     environment.systemPackages = with pkgs; [
@@ -19,11 +21,13 @@
       foxglove-studio
       pkgsUnstable.claude-code
       python3
+      uv
       go
       lmstudio
       savvycan
       glab
       gh
+      openssl
     ];
   };
 }
