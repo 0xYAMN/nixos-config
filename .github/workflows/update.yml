@@ -19,7 +19,7 @@ jobs:
         run: nix flake update
 
       - name: nix flake check
-        run: nix flake check --no-build -L
+        run: nix flake check -L
 
       - name: commit and push
         run: |
