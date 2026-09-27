@@ -34,6 +34,7 @@
       ./hosts/${host}/configuration.nix
       ./nixosModules/default.nix
       home-manager.nixosModules.home-manager
+      { nixpkgs.overlays = [ nix-matlab.overlay ]; }
       {
         home-manager.useGlobalPkgs   = true;
         home-manager.useUserPackages = true;
@@ -55,9 +56,7 @@
     nixosConfigurations.thoth = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit catppuccin; pkgsUnstable = unstablePkgs "x86_64-linux"; };
-      modules = sharedModules "thoth" "x86_64-linux" ++ [
-        { nixpkgs.overlays = [ nix-matlab.overlay ]; }
-      ];
+      modules = sharedModules "thoth" "x86_64-linux";
     };
     
     homeModules.default   = ./homeModules/default.nix;

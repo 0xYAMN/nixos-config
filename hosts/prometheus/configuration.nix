@@ -52,6 +52,9 @@
   modules.virtualisation.enable = true;
   modules.packages.enable       = true;
 
+  # ── MATLAB ─────────
+  environment.systemPackages = [ pkgs.matlab pkgs.matlab-shell ];
+
   # ── Home-manager user ─────────────────────────────────────────────────────
   home-manager.users.yamn = import ./home.nix;
 
