@@ -33,6 +33,7 @@ in {
       ffmpeg
       cava
       yazi
+      zip
     ];
   };
 }

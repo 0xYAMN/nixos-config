@@ -25,6 +25,7 @@
       webex
       wlogout
       vscode
+      signal-desktop
     ];
   };
 }

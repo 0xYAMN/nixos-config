@@ -19,6 +19,8 @@
       docker-compose
       can-utils
       foxglove-studio
+      helix
+      zed-editor
       pkgsUnstable.claude-code
       python3
       uv
