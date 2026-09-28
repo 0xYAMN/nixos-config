@@ -14,6 +14,7 @@
     ./tmux.nix
     ./git.nix
     ./vscode.nix
+    ./zed.nix
     ./screenshot.nix
     ./hyprlock.nix
     ./hypridle.nix
