@@ -21,6 +21,8 @@
       foxglove-studio
       helix
       zed-editor
+      nil
+      nixd
       pkgsUnstable.claude-code
       python3
       uv
