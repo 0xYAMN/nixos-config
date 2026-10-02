@@ -10,8 +10,8 @@
 
       disable_ai = true;
 
-      lsp.clangd.arguments = [
-        "--query-driver=/home/yamn/.platformio/packages/toolchain-*/bin/*"
+      lsp.clangd.binary.arguments = [
+        "--query-driver=/home/yamn/.platformio/packages/toolchain-*/bin/*,/nix/store/*/bin/*"
       ];
     };
 
