@@ -59,6 +59,8 @@
       modules = sharedModules "thoth" "x86_64-linux";
     };
     
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+
     homeModules.default   = ./homeModules/default.nix;
     nixosModules.default  = ./nixosModules/default.nix;
   };

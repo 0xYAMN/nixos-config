@@ -5,20 +5,24 @@
     programs.bash = {
       enable = true;
 
-      historyControl = [ "ignoredups" "erasedups" ];
+      historyControl = [
+        "ignoredups"
+        "erasedups"
+      ];
 
       shellAliases = {
-        "ll"  = "ls -lah";
-        "la"  = "ls -A";
+        "ll" = "ls -lah";
+        "la" = "ls -A";
         ".." = "cd ..";
         "nixc" = "cd /home/yamn/nixos-config";
+        "z" = "zeditor .";
         "dev" = "cd /home/yamn/DEV";
         "trdp" = "cd /home/yamn/DEV/IFS/trdp_abstraction_layer";
-	      "sbrc" = "source ~/.bashrc";      
+        "sbrc" = "source ~/.bashrc";
       };
 
       initExtra = ''
-        
+
         function y() {
           local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
           command yazi "$@" --cwd-file="$tmp"
