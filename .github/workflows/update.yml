@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/nix-installer-action@v23
 
       - name: nix flake update
         run: nix flake update
