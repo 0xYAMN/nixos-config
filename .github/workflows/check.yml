@@ -14,3 +14,11 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - name: nix flake check
         run: nix flake check -L
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: nix fmt check
+        run: nix fmt -- --check .
