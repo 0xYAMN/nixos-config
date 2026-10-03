@@ -24,6 +24,11 @@
       url = "github:0xYAMN/nix-matlab";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -35,6 +40,7 @@
       catppuccin,
       spicetify-nix,
       nix-matlab,
+      git-hooks,
       ...
     }:
     let
@@ -61,6 +67,14 @@
           ];
         }
       ];
+
+      preCommit = git-hooks.lib.x86_64-linux.run {
+        src = ./.;
+        hooks.nixfmt = {
+          enable = true;
+          package = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+        };
+      };
     in
     {
       nixosConfigurations.prometheus = nixpkgs.lib.nixosSystem {
@@ -82,6 +96,13 @@
       };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+
+      checks.x86_64-linux.pre-commit = preCommit;
+
+      devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+        inherit (preCommit) shellHook;
+        packages = preCommit.enabledPackages;
+      };
 
       homeModules.default = ./homeModules/default.nix;
       nixosModules.default = ./nixosModules/default.nix;
