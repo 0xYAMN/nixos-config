@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options.modules.screenshot.enable = lib.mkEnableOption "screenshot tools (grim + slurp + wl-clipboard)";
 
   config = lib.mkIf config.modules.screenshot.enable {

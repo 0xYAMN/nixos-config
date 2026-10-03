@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.modules.hyprpaper.enable = lib.mkEnableOption "hyprpaper wallpaper daemon";
 
   config = lib.mkIf config.modules.hyprpaper.enable {

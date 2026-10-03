@@ -5,6 +5,6 @@
     networking.networkmanager.enable = true;
 
     environment.etc = {
-          };
+    };
   };
 }

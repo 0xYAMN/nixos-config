@@ -20,22 +20,29 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
-    LC_ADDRESS        = "nl_NL.UTF-8";
+    LC_ADDRESS = "nl_NL.UTF-8";
     LC_IDENTIFICATION = "nl_NL.UTF-8";
-    LC_MEASUREMENT    = "nl_NL.UTF-8";
-    LC_MONETARY       = "nl_NL.UTF-8";
-    LC_NAME           = "nl_NL.UTF-8";
-    LC_NUMERIC        = "nl_NL.UTF-8";
-    LC_PAPER          = "nl_NL.UTF-8";
-    LC_TELEPHONE      = "nl_NL.UTF-8";
-    LC_TIME           = "nl_NL.UTF-8";
+    LC_MEASUREMENT = "nl_NL.UTF-8";
+    LC_MONETARY = "nl_NL.UTF-8";
+    LC_NAME = "nl_NL.UTF-8";
+    LC_NUMERIC = "nl_NL.UTF-8";
+    LC_PAPER = "nl_NL.UTF-8";
+    LC_TELEPHONE = "nl_NL.UTF-8";
+    LC_TIME = "nl_NL.UTF-8";
   };
 
   # ── Users ─────────────────────────────────────────────────────────────────
   users.users.yamn = {
     isNormalUser = true;
-    description  = "Yannick Monjeamb";
-    extraGroups  = [ "wheel" "networkmanager" "video" "audio" "docker" "wireshark"];
+    description = "Yannick Monjeamb";
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "audio"
+      "docker"
+      "wireshark"
+    ];
     initialPassword = "changeme";
   };
 
@@ -44,16 +51,19 @@
   nixpkgs.config.allowUnfree = true;
 
   # ── NixOS modules ─────────────────────────────────────────────────────────
-  modules.audio.enable          = true;
-  modules.bluetooth.enable      = true;
-  modules.display.enable        = true;
-  modules.networking.enable     = true;
-  modules.nix.enable            = true;
+  modules.audio.enable = true;
+  modules.bluetooth.enable = true;
+  modules.display.enable = true;
+  modules.networking.enable = true;
+  modules.nix.enable = true;
   modules.virtualisation.enable = true;
-  modules.packages.enable       = true;
+  modules.packages.enable = true;
 
   # ── MATLAB ─────────
-  environment.systemPackages = [ pkgs.matlab pkgs.matlab-shell ];
+  environment.systemPackages = [
+    pkgs.matlab
+    pkgs.matlab-shell
+  ];
 
   # ── Home-manager user ─────────────────────────────────────────────────────
   home-manager.users.yamn = import ./home.nix;
@@ -61,12 +71,15 @@
   system.stateVersion = "25.11";
 
   # ── Nix settings ──────────────────────────────────────────────────────────
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.settings.auto-optimise-store = true;
 
   nix.gc = {
     automatic = true;
-    dates     = "weekly";
-    options   = "--delete-older-than 7d";
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 }

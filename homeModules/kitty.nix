@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options.modules.kitty.enable = lib.mkEnableOption "kitty terminal emulator";
 
   config = lib.mkIf config.modules.kitty.enable {
@@ -17,7 +23,10 @@
       exec = "kitty";
       icon = "kitty";
       startupNotify = false;
-      categories = [ "System" "TerminalEmulator" ];
+      categories = [
+        "System"
+        "TerminalEmulator"
+      ];
       settings = {
         TryExec = "kitty";
         X-TerminalArgExec = "--";

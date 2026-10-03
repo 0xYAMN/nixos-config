@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.modules.vscode.enable = lib.mkEnableOption "vscode editor";
 
   config = lib.mkIf config.modules.vscode.enable {

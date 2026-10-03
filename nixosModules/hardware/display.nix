@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.modules.display.enable = lib.mkEnableOption "display via hyprland + greetd";
 
   config = lib.mkIf config.modules.display.enable {

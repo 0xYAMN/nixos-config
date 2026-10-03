@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options.modules.wofi.enable = lib.mkEnableOption "wofi application launcher";
 
   config = lib.mkIf config.modules.wofi.enable {

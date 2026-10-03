@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options.modules.wlogout.enable = lib.mkEnableOption "wlogout session menu";
 
   config = lib.mkIf config.modules.wlogout.enable {

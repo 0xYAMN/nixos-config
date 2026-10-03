@@ -1,7 +1,14 @@
-{ pkgs, lib, config, spicetify-nix, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  spicetify-nix,
+  ...
+}:
 let
   spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-in {
+in
+{
   options.modules.spotify.enable = lib.mkEnableOption "spotify";
 
   config = lib.mkIf config.modules.spotify.enable {

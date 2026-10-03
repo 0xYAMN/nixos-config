@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   config = lib.mkIf config.modules.packages.enable {
     # LocalSend
     networking.firewall.allowedTCPPorts = [ 53317 ];
@@ -9,10 +15,12 @@
     programs.firefox.policies.ExtensionSettings = {
       "FirefoxColor@mozilla.com" = {
         installation_mode = "force_installed";
-        install_url = "file://${pkgs.fetchurl {
-          url = "https://addons.mozilla.org/firefox/downloads/file/3643624/firefox_color-2.1.7.xpi";
-          hash = "sha256-t/sHtniPcjPdYiPngOGJtMe5VsJcQEk8KNcCBJMkkpI=";
-        }}";
+        install_url = "file://${
+          pkgs.fetchurl {
+            url = "https://addons.mozilla.org/firefox/downloads/file/3643624/firefox_color-2.1.7.xpi";
+            hash = "sha256-t/sHtniPcjPdYiPngOGJtMe5VsJcQEk8KNcCBJMkkpI=";
+          }
+        }";
       };
     };
 

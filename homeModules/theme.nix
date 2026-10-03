@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options.modules.theme.enable = lib.mkEnableOption "catppuccin theme + fonts";
 
   config = lib.mkIf config.modules.theme.enable {
@@ -27,9 +33,9 @@
     # Cursor theme — matches catppuccin macchiato/mauve setup
     home.pointerCursor = {
       package = pkgs.catppuccin-cursors.macchiatoMauve;
-      name    = "catppuccin-mocha-mauve-cursors";
-      size    = 24;
-      gtk.enable = true;   # also applies cursor to GTK apps
+      name = "catppuccin-mocha-mauve-cursors";
+      size = 24;
+      gtk.enable = true; # also applies cursor to GTK apps
     };
 
     home.packages = with pkgs; [ nerd-fonts.hack ];

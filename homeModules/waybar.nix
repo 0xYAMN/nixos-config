@@ -1,14 +1,22 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options.modules.waybar = {
     enable = lib.mkEnableOption "waybar status bar";
 
     outputs = lib.mkOption {
-      type = lib.types.listOf (lib.types.submodule {
-        options = {
-          output = lib.mkOption { type = lib.types.str; };
-        };
-      });
-      default = [];
+      type = lib.types.listOf (
+        lib.types.submodule {
+          options = {
+            output = lib.mkOption { type = lib.types.str; };
+          };
+        }
+      );
+      default = [ ];
     };
   };
 
@@ -28,14 +36,28 @@
             format = "{icon}  {capacity}%";
             format-charging = "  {capacity}%";
             format-plugged = "  {capacity}%";
-            format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
-            states = { warning = 30; critical = 15; };
+            format-icons = [
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
+            ];
+            states = {
+              warning = 30;
+              critical = 15;
+            };
             tooltip = false;
           };
 
           network = {
-            format-wifi         = "󰤨  {essid}";
-            format-ethernet     = "󰈀  eth";
+            format-wifi = "󰤨  {essid}";
+            format-ethernet = "󰈀  eth";
             format-disconnected = "󰤮  offline";
             tooltip = false;
           };
@@ -63,7 +85,13 @@
           pulseaudio = {
             format = "{icon}  {volume}%";
             format-muted = "󰝟  muted";
-            format-icons = { default = [ "󰕿" "󰖀" "󰕾" ]; };
+            format-icons = {
+              default = [
+                "󰕿"
+                "󰖀"
+                "󰕾"
+              ];
+            };
             on-click = "swayosd-client --output-volume mute-toggle";
             on-scroll-up = "swayosd-client --output-volume raise";
             on-scroll-down = "swayosd-client --output-volume lower";
@@ -83,24 +111,36 @@
         };
 
         commonBar = {
-          layer    = "top";
+          layer = "top";
           position = "top";
-          height   = 32;
-          spacing  = 0;
+          height = 32;
+          spacing = 0;
           margin-top = 0;
           margin-left = 0;
           margin-right = 0;
-          modules-left   = [ "hyprland/workspaces" ];
+          modules-left = [ "hyprland/workspaces" ];
           modules-center = [ "clock" ];
-          modules-right  = [ "cpu" "temperature" "memory" "pulseaudio" "network" "battery" "tray" "custom/logout" ];
-        } // commonModules;
+          modules-right = [
+            "cpu"
+            "temperature"
+            "memory"
+            "pulseaudio"
+            "network"
+            "battery"
+            "tray"
+            "custom/logout"
+          ];
+        }
+        // commonModules;
 
         workspacesPerMonitor = 8;
         maxMonitorsSupported = 8;
-        numberIcons = lib.listToAttrs (map (n: {
-          name  = toString n;
-          value = toString (lib.mod (n - 1) workspacesPerMonitor + 1);
-        }) (lib.range 1 (workspacesPerMonitor * maxMonitorsSupported)));
+        numberIcons = lib.listToAttrs (
+          map (n: {
+            name = toString n;
+            value = toString (lib.mod (n - 1) workspacesPerMonitor + 1);
+          }) (lib.range 1 (workspacesPerMonitor * maxMonitorsSupported))
+        );
 
         workspacesModule = {
           "hyprland/workspaces" = {
@@ -114,13 +154,13 @@
         };
       in
       {
-      enable = true;
+        enable = true;
 
-      settings = map (o:
-        commonBar // { output = o.output; } // workspacesModule
-      ) config.modules.waybar.outputs;
+        settings = map (
+          o: commonBar // { output = o.output; } // workspacesModule
+        ) config.modules.waybar.outputs;
 
-      style = builtins.readFile ./waybar.css;
-    };
+        style = builtins.readFile ./waybar.css;
+      };
   };
 }
