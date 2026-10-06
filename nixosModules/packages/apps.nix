@@ -34,6 +34,7 @@
       wlogout
       vscode
       signal-desktop
+      obsidian
     ];
   };
 }
