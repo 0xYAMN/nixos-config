@@ -21,7 +21,7 @@
     };
 
     nix-matlab = {
-      url = "github:0xYAMN/nix-matlab";
+      url = "github:0xYAMN/nix-matlab?ref=fix-new-naming-of-xorg-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
