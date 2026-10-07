@@ -27,7 +27,6 @@
   modules.kitty.enable = true;
   modules.tmux.enable = true;
   modules.git.enable = true;
-  modules.vscode.enable = true;
   modules.zed.enable = true;
   modules.screenshot.enable = true;
   modules.hyprlock.enable = true;
