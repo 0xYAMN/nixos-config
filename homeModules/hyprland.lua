@@ -19,7 +19,7 @@ end)
 -- ── Visual settings ───────────────────────────────────────────────────────────
 hl.config({
   cursor = {
-    no_hardware_cursors = true,  
+    no_hardware_cursors = true,
   },
   general = {
     gaps_in    = 6,
@@ -42,6 +42,7 @@ hl.config({
   input = {
     sensitivity   = -0.1,
     accel_profile = "flat",
+    natural_scroll = true,
     kb_options    = "caps:super", -- Caps Lock doubles as an extra Super/Win key
   },
 })

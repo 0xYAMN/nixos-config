@@ -40,6 +40,9 @@ in
       cava
       yazi
       zip
+      glab
+      gh
+      openssl
     ];
   };
 }

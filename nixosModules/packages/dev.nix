@@ -26,13 +26,12 @@
       docker-compose
       can-utils
       (foxglove-studio.overrideAttrs (old: rec {
-        version = "3.3.0";
+        version = "3.4.2";
         src = fetchurl {
           url = "https://get.foxglove.dev/desktop/v${version}/foxglove-studio-${version}-linux-amd64.deb";
-          hash = "sha256-LWSpJ4lnsLpwrxFvade0fZl3sWgAgFU+MEdwyfFcDSo=";
+          hash = "sha256-Fked9vGaiDWP9oH7F41QGSdhPpcEYDCc/8gN9ROWTYI=";
         };
       }))
-      helix
       antigravity
       zed-editor
       nil
@@ -43,11 +42,8 @@
       go
       lmstudio
       savvycan
-      glab
-      gh
-      openssl
-      opencode
       qwen-code
+      vscode
     ];
   };
 }
