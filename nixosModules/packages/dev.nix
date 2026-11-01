@@ -17,33 +17,39 @@
     ];
     services.udev.packages = [ pkgs.teensy-udev-rules ];
     environment.systemPackages = with pkgs; [
+      # Build Tools
       gcc
+      gdb
       gnumake
       pkg-config
       cmake
+      clang-tools
+      gtest
+      lcov
       ninja
       binutils
       docker-compose
-      can-utils
-      (foxglove-studio.overrideAttrs (old: rec {
-        version = "3.4.2";
-        src = fetchurl {
-          url = "https://get.foxglove.dev/desktop/v${version}/foxglove-studio-${version}-linux-amd64.deb";
-          hash = "sha256-Fked9vGaiDWP9oH7F41QGSdhPpcEYDCc/8gN9ROWTYI=";
-        };
-      }))
-      antigravity
-      zed-editor
-      nil
       nixd
-      pkgsUnstable.claude-code
+      nil
+      can-utils
+      # Python
       python3
       uv
+      # GO
       go
-      lmstudio
-      savvycan
+      gopls
+      gotools
+      # Tools
+      pkgsUnstable.claude-code
       qwen-code
+      opencode
+      gemini-cli
+      # Editors
+      zed-editor
       vscode
+      #
+      savvycan
+      pkgsUnstable.foxglove-studio
     ];
   };
 }

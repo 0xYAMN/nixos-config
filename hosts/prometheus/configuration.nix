@@ -87,4 +87,8 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+
+  systemd.services.nix-gc.preStart = ''
+    ${config.nix.package}/bin/nix-env -p /nix/var/nix/profiles/system --delete-generations +10
+  '';
 }

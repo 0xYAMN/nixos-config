@@ -25,14 +25,12 @@
     };
 
     environment.systemPackages = with pkgs; [
-      nautilus
       localsend
       slack
       _1password-gui
       vlc
       webex
       wlogout
-      vscode
       signal-desktop
       obsidian
     ];
