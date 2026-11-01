@@ -51,7 +51,7 @@
           config.allowUnfree = true;
         };
 
-      sharedModules = host: system: [
+      sharedModules = host: [
         ./hosts/${host}/configuration.nix
         ./nixosModules/default.nix
         home-manager.nixosModules.home-manager
@@ -68,6 +68,17 @@
         }
       ];
 
+      mkHost =
+        host:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit catppuccin;
+            pkgsUnstable = unstablePkgs "x86_64-linux";
+          };
+          modules = sharedModules host;
+        };
+
       preCommit = git-hooks.lib.x86_64-linux.run {
         src = ./.;
         hooks.nixfmt = {
@@ -77,23 +88,7 @@
       };
     in
     {
-      nixosConfigurations.prometheus = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit catppuccin;
-          pkgsUnstable = unstablePkgs "x86_64-linux";
-        };
-        modules = sharedModules "prometheus" "x86_64-linux";
-      };
-
-      nixosConfigurations.thoth = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit catppuccin;
-          pkgsUnstable = unstablePkgs "x86_64-linux";
-        };
-        modules = sharedModules "thoth" "x86_64-linux";
-      };
+      nixosConfigurations = nixpkgs.lib.genAttrs [ "prometheus" "thoth" ] mkHost;
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
 

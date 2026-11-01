@@ -3,5 +3,6 @@
 
   config = lib.mkIf config.modules.virtualisation.enable {
     virtualisation.docker.enable = true;
+    virtualisation.docker.enableOnBoot = false;
   };
 }
