@@ -16,11 +16,11 @@
       package = null;
       settings = {
         splash = false;
-        preload = [ "${./wallpaper.jpg}" ];
+        preload = [ "${../assets/wallpaper.jpg}" ];
         wallpaper = [
           {
             monitor = "";
-            path = "${./wallpaper.jpg}";
+            path = "${../assets/wallpaper.jpg}";
           }
         ];
       };

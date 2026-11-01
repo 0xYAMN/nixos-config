@@ -12,7 +12,7 @@
 
         background = [
           {
-            path = "${./wallpaper.jpg}";
+            path = "${../assets/wallpaper.jpg}";
             blur_size = 4;
             blur_passes = 3;
             brightness = 0.6;

@@ -19,6 +19,7 @@
         "dev" = "cd /home/yamn/DEV";
         "trdp" = "cd /home/yamn/DEV/IFS/trdp_abstraction_layer";
         "sbrc" = "source ~/.bashrc";
+        "cpwd" = "pwd | tr -d '\\n' | wl-copy";
       };
 
       initExtra = ''
