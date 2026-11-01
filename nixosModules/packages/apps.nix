@@ -33,6 +33,7 @@
       wlogout
       signal-desktop
       obsidian
+      discord
     ];
   };
 }

@@ -74,6 +74,7 @@
   modules.nix.enable = true;
   modules.virtualisation.enable = true;
   modules.packages.enable = true;
+  modules.packages.games.enable = true;
 
   # ── MATLAB ─────────
   environment.systemPackages = [
