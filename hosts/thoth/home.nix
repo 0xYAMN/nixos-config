@@ -29,7 +29,7 @@
     { output = "DP-3"; }
     { output = "DP-2"; }
   ];
-  modules.wofi.enable = true;
+  modules.rofi.enable = true;
   modules.mako.enable = true;
   modules.kitty.enable = true;
   modules.tmux.enable = true;
@@ -39,7 +39,7 @@
   modules.hyprlock.enable = true;
   modules.hypridle.enable = true;
   modules.clipboard.enable = true;
-  modules.wlogout.enable = true;
+  modules.powermenu.enable = true;
   modules.spotify.enable = true;
   modules.direnv.enable = true;
 

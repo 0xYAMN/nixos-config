@@ -62,16 +62,15 @@ hl.animation({ leaf = "fadeDim",     enabled = true, speed = 3,   bezier = "quic
 hl.animation({ leaf = "workspaces",  enabled = true, speed = 3.5, bezier = "almostLinear", style = "slide" })
 
 -- ── Layer rules ───────────────────────────────────────────────────────────────
-hl.layer_rule({ dim_around = true, match = { namespace = "wofi" } })
-hl.layer_rule({ dim_around = true, match = { namespace = "wlogout" } })
+hl.layer_rule({ dim_around = true, match = { namespace = "rofi" } })
 
 -- ── Keybinds ──────────────────────────────────────────────────────────────────
 
 -- Applications
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("kitty"))
-hl.bind(mainMod .. " + R",      hl.dsp.exec_cmd("wofi --show drun"))
+hl.bind(mainMod .. " + R",      hl.dsp.exec_cmd("rofi -show drun"))
 -- Clipboard history picker: fuzzy-search past copies, re-copies the selection
-hl.bind(mainMod .. " + C",      hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
+hl.bind(mainMod .. " + C",      hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
 
 -- Window management
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
@@ -91,6 +90,7 @@ hl.bind(mainMod .. " + SHIFT + S",  hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | wl
 -- Session
 hl.bind(mainMod .. " + M", hl.dsp.exit())
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("rofi-powermenu"))
 
 -- Volume / brightness (XF86 media keys via swayosd)
 hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("swayosd-client --output-volume raise"))

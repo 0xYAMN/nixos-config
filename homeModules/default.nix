@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ ... }: {
   xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
 
   imports = [
@@ -8,7 +8,7 @@
     ./hyprpaper.nix
     ./bash.nix
     ./waybar.nix
-    ./wofi.nix
+    ./rofi.nix
     ./mako.nix
     ./kitty.nix
     ./tmux.nix
@@ -18,7 +18,7 @@
     ./hyprlock.nix
     ./hypridle.nix
     ./clipboard.nix
-    ./wlogout.nix
+    ./powermenu.nix
     ./spotify.nix
     ./direnv.nix
   ];

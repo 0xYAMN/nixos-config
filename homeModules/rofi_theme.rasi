@@ -1,0 +1,67 @@
+* {
+  bg:      #1e1e2e;
+  bg-alt:  #313244;
+  border:  #45475a;
+  fg:      #cdd6f4;
+  accent:  #cba6f7;
+
+  font:             "Hack Nerd Font 14";
+  background-color: transparent;
+  text-color:       @fg;
+}
+
+window {
+  location:         center;
+  width:            600px;
+  background-color: @bg;
+  border:           1px solid;
+  border-color:     @accent;
+  border-radius:    12px;
+}
+
+mainbox {
+  padding:  8px;
+  children: [ inputbar, listview ];
+}
+
+inputbar {
+  background-color: @bg-alt;
+  border:           1px solid;
+  border-color:     @accent;
+  border-radius:    8px;
+  padding:          8px 12px;
+  margin:           0 0 8px 0;
+  spacing:          8px;
+  children:         [ prompt, entry ];
+}
+
+prompt {
+  enabled: false;
+}
+
+entry {
+  placeholder:       "Search...";
+  placeholder-color: @border;
+}
+
+listview {
+  lines:        8;
+  columns:      1;
+  fixed-height: true;
+  scrollbar:    false;
+}
+
+element {
+  border-radius: 8px;
+  padding:       6px 10px;
+  spacing:       8px;
+}
+
+element selected.normal {
+  background-color: @bg-alt;
+  text-color:       @accent;
+}
+
+element-icon {
+  size: 32px;
+}

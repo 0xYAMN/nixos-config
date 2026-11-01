@@ -30,7 +30,6 @@
       _1password-gui
       vlc
       webex
-      wlogout
       signal-desktop
       obsidian
       discord

@@ -105,7 +105,7 @@
 
           "custom/logout" = {
             format = "󰐥";
-            on-click = "wlogout";
+            on-click = "rofi-powermenu";
             tooltip = false;
           };
         };
