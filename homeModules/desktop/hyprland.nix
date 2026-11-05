@@ -8,6 +8,12 @@
   options.modules.hyprland = {
     enable = lib.mkEnableOption "hyprland window manager";
 
+    naturalScroll = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Natural (inverted) scroll direction for pointer devices.";
+    };
+
     monitors = lib.mkOption {
       type = lib.types.listOf (
         lib.types.submodule {
@@ -78,6 +84,10 @@
             w: ''hl.workspace_rule({ workspace = "${w.workspace}", monitor = "${w.monitor}" })''
           ) config.modules.hyprland.workspaceMonitors;
 
+          inputSection =
+            "-- ── Input ────────────────────────────────────────────────────────────────────\n"
+            + "hl.config({ input = { natural_scroll = ${lib.boolToString config.modules.hyprland.naturalScroll} } })\n\n";
+
           monitorSection = lib.optionalString (config.modules.hyprland.monitors != [ ]) (
             "-- ── Monitors ─────────────────────────────────────────────────────────────────\n"
             + monitorLines
@@ -90,7 +100,7 @@
             + "\n"
           );
         in
-        monitorSection + workspaceSection + "\n" + builtins.readFile ./hyprland.lua;
+        inputSection + monitorSection + workspaceSection + "\n" + builtins.readFile ./hyprland.lua;
     };
   };
 }

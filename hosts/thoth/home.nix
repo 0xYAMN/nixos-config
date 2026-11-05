@@ -9,6 +9,7 @@
   modules.firefox.enable = true;
   modules.bash.enable = true;
   modules.hyprland.enable = true;
+  modules.hyprland.naturalScroll = false;
   modules.hyprland.monitors = [
     {
       output = "DP-3";
