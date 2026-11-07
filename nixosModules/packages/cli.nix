@@ -43,6 +43,14 @@ in
       glab
       gh
       openssl
+      nmap
+      arp-scan
+      tcpdump
+      mtr
+      iw
+      wavemon
+      netcat-openbsd
+      avahi
     ];
   };
 }

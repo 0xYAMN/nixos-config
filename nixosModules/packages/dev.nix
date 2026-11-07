@@ -35,6 +35,7 @@
       # Python
       python3
       uv
+      basedpyright
       # GO
       go
       gopls
