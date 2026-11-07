@@ -10,6 +10,12 @@
 
       disable_ai = true;
 
+      # let nil fetch/archive flake inputs
+      lsp.nil.initialization_options.nix.flake = {
+        autoArchive = true;
+        autoEvalInputs = true;
+      };
+
       lsp.clangd.binary.arguments = [
         "--query-driver=/home/yamn/.platformio/packages/toolchain-*/bin/*,/nix/store/*/bin/*"
       ];
