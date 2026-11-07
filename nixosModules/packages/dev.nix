@@ -47,7 +47,7 @@
       gemini-cli
       # Editors
       zed-editor
-      vscode
+      pkgsUnstable.vscode
       #
       savvycan
       pkgsUnstable.foxglove-studio
