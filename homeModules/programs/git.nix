@@ -15,6 +15,7 @@
           format = "ssh";
         };
         credential.helper = "store";
+        pull.rebase = true;
       };
     };
   };
