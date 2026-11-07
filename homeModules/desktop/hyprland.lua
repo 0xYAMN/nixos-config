@@ -73,7 +73,7 @@ hl.bind(mainMod .. " + C",      hl.dsp.exec_cmd("cliphist list | rofi -dmenu | c
 
 -- Window management
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl dispatch killactive"))
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 
 -- Mouse binds (drag to move / resize floating windows)

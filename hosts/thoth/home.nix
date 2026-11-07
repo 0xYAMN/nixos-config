@@ -43,6 +43,7 @@
   modules.powermenu.enable = true;
   modules.spotify.enable = true;
   modules.direnv.enable = true;
+  modules.webex.enable = true;
 
   home.stateVersion = "25.11";
 }

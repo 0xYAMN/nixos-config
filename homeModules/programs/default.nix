@@ -9,5 +9,6 @@
     ./direnv.nix
     ./nixpkgs.nix
     ./firefox.nix
+    ./webex.nix
   ];
 }
