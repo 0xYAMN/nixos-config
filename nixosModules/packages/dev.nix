@@ -15,7 +15,10 @@
       stdenv.cc.cc.lib
       zlib
     ];
-    services.udev.packages = [ pkgs.teensy-udev-rules ];
+    services.udev.packages = [
+      pkgs.teensy-udev-rules
+      pkgs.stlink
+    ];
     environment.systemPackages = with pkgs; [
       # Build Tools
       gcc
@@ -32,6 +35,10 @@
       nixd
       nil
       can-utils
+      # Embedded
+      stm32cubemx
+      stlink
+      openocd
       # Python
       python3
       uv
@@ -44,7 +51,7 @@
       pkgsUnstable.claude-code
       qwen-code
       opencode
-      gemini-cli
+      pkgsUnstable.deepseek-harness
       # Editors
       zed-editor
       pkgsUnstable.vscode

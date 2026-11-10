@@ -58,6 +58,7 @@
       signal-desktop
       obsidian
       discord
+      google-chrome
     ];
   };
 }

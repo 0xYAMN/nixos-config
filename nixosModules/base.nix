@@ -40,6 +40,7 @@
       "audio"
       "docker"
       "wireshark"
+      "dialout"
     ];
     initialPassword = "changeme";
     shell = pkgs.bash;
