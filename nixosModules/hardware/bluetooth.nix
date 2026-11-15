@@ -8,16 +8,22 @@
     # AirPods:
     hardware.bluetooth.settings = {
       General = {
-        Enable = "Source,Sink,Media,Socket";
         JustWorksRepairing = "always";
         MultiProfile = "multiple";
         FastConnectable = true;
         Experimental = true;
+        KernelExperimental = "6fbaf188-05e0-496a-9885-d6ddfdb4e03e";
       };
     };
 
-    boot.kernelParams = [ "bluetooth.disable_ertm=1" ];
-
     services.blueman.enable = true;
+
+    nixpkgs.overlays = [
+      (final: prev: {
+        blueman = prev.blueman.overrideAttrs (old: {
+          propagatedUserEnvPkgs = [ ];
+        });
+      })
+    ];
   };
 }

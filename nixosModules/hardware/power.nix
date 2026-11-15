@@ -55,6 +55,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    services.upower.enable = true;
+
     services.udev.extraRules = ''
       SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ACTION=="add|change", RUN+="${applyPower} $attr{online}"
     '';
