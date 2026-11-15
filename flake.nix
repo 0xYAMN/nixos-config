@@ -29,6 +29,11 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    bootvine = {
+      url = "git+https://codeberg.org/wvhulle/bootvine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -41,6 +46,7 @@
       spicetify-nix,
       nix-matlab,
       git-hooks,
+      bootvine,
       ...
     }:
     let
@@ -54,6 +60,8 @@
       sharedModules = host: [
         ./hosts/${host}/configuration.nix
         ./nixosModules/default.nix
+        { networking.hostName = host; }
+        bootvine.nixosModules.default
         home-manager.nixosModules.home-manager
         { nixpkgs.overlays = [ nix-matlab.overlay ]; }
         {

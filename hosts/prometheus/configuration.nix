@@ -6,6 +6,7 @@
   # ── NixOS modules ─────────────────────────────────────────────────────────
   modules.audio.enable = true;
   modules.bluetooth.enable = true;
+  modules.bootvine.enable = true;
   modules.can.enable = true;
   modules.display.enable = true;
   modules.networking.enable = true;

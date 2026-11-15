@@ -9,9 +9,6 @@
   services.fstrim.enable = true;
   zramSwap.enable = true;
 
-  # ── Networking ────────────────────────────────────────────────────────────
-  networking.hostName = "nixos";
-
   # ── Locale & time ─────────────────────────────────────────────────────────
   time.timeZone = "Europe/Amsterdam";
   time.hardwareClockInLocalTime = true;
