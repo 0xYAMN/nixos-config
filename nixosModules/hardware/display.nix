@@ -21,7 +21,7 @@
           user = "greeter";
         };
         initial_session = {
-          command = "${pkgs.hyprland}/bin/start-hyprland";
+          command = "${pkgs.bash}/bin/bash -c '${pkgs.hyprland}/bin/start-hyprland >/dev/null'";
           user = "yamn";
         };
       };
