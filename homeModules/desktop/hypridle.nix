@@ -1,5 +1,19 @@
 { lib, config, ... }: {
-  options.modules.hypridle.enable = lib.mkEnableOption "hypridle idle daemon";
+  options.modules.hypridle = {
+    enable = lib.mkEnableOption "hypridle idle daemon";
+
+    lockTimeout = lib.mkOption {
+      type = lib.types.ints.positive;
+      default = 5;
+      description = "Minutes of idle time before the screen is locked.";
+    };
+
+    sleepTimeout = lib.mkOption {
+      type = lib.types.ints.positive;
+      default = 10;
+      description = "Minutes of idle time before the display is turned off (sleep).";
+    };
+  };
 
   config = lib.mkIf config.modules.hypridle.enable {
     services.hypridle = {
@@ -14,13 +28,13 @@
 
         listener = [
           {
-            # 5 min idle --> lock screen
-            timeout = 300;
+            # idle --> lock screen
+            timeout = config.modules.hypridle.lockTimeout * 60;
             on-timeout = "loginctl lock-session";
           }
           {
-            # 10 min idle --> turn off display
-            timeout = 600;
+            # idle --> turn off display
+            timeout = config.modules.hypridle.sleepTimeout * 60;
             on-timeout = "hyprctl dispatch dpms off";
             on-resume = "hyprctl dispatch dpms on";
           }

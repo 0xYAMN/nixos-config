@@ -38,7 +38,11 @@
   modules.zed.enable = true;
   modules.screenshot.enable = true;
   modules.hyprlock.enable = true;
-  modules.hypridle.enable = true;
+  modules.hypridle = {
+    enable = true;
+    lockTimeout = 15;
+    sleepTimeout = 30;
+  };
   modules.clipboard.enable = true;
   modules.powermenu.enable = true;
   modules.spotify.enable = true;
