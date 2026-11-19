@@ -12,7 +12,7 @@ let
       owner = "wireshark";
       repo = "wireshark";
       rev = "v${version}";
-      hash = "sha256-Ttzc9kv7lOo+QrwUsS2b9ywL8wDpHluMDqZI/Y8cbb8=";
+      hash = "sha256-4sFzM/jz9LmqkUoZThNvFDoOwpsUbONPOYyVQDE28mU=";
     };
   });
 in
