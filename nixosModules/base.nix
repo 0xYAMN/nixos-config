@@ -37,11 +37,14 @@
       "audio"
       "docker"
       "wireshark"
-      "dialout"
+      "dialout" # serial ports (/dev/ttyUSB*, /dev/ttyACM*)
+      "plugdev"
     ];
     initialPassword = "changeme";
     shell = pkgs.bash;
   };
+
+  users.groups.plugdev = { };
 
   nixpkgs.config.allowUnfree = true;
 

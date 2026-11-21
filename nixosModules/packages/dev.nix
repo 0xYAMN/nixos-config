@@ -15,9 +15,12 @@
       stdenv.cc.cc.lib
       zlib
     ];
-    services.udev.packages = [
-      pkgs.teensy-udev-rules
-      pkgs.stlink
+    # USB access for MCUs, programmers and debug probes (ST-Link, CMSIS-DAP, FTDI, ...)
+    services.udev.packages = with pkgs; [
+      teensy-udev-rules
+      platformio-core.udev
+      openocd
+      stlink
     ];
     environment.systemPackages = with pkgs; [
       # Build Tools
@@ -35,10 +38,12 @@
       nixd
       nil
       can-utils
-      # Embedded
+      # MCU flashing / debugging
       stm32cubemx
-      stlink
       openocd
+      stlink
+      esptool
+      usbutils
       # Python
       python3
       uv
