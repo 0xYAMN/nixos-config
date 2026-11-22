@@ -19,6 +19,10 @@
   modules.virtualisation.enable = true;
   modules.packages.enable = true;
 
+  # ── Firewall ──────────────────────────────────────────────────────────────
+  networking.firewall.allowedUDPPorts = [ 17224 ];
+  networking.firewall.interfaces.wlp2s0.allowedTCPPorts = [ 8765 ];
+
   # ── Home-manager user ─────────────────────────────────────────────────────
   home-manager.users.yamn = import ./home.nix;
 }
