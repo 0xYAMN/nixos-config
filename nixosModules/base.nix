@@ -54,5 +54,10 @@
     pkgs.matlab-shell
   ];
 
+  environment.sessionVariables = {
+    GOPATH = "$HOME/.local/share/go";
+    GOMODCACHE = "$HOME/.cache/go-mod";
+  };
+
   system.stateVersion = "25.11";
 }
