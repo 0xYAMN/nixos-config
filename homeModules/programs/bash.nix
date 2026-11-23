@@ -16,10 +16,10 @@
         ".." = "cd ..";
         "nixc" = "cd /home/yamn/nixos-config";
         "z" = "zeditor .";
-        "dev" = "cd /home/yamn/DEV";
-        "trdp" = "cd /home/yamn/DEV/IFS/trdp_abstraction_layer";
         "sbrc" = "source ~/.bashrc";
         "cpwd" = "pwd | tr -d '\\n' | wl-copy";
+        "dev" = "cd /home/yamn/DEV";
+        "trdp" = "cd /home/yamn/DEV/IFS/trdp_abstraction_layer";
       };
 
       initExtra = ''
@@ -32,23 +32,28 @@
           command rm -f -- "$tmp"
         }
 
-        nix_shell_status() {
-            if [ "$IN_NIX_SHELL" = "in-pure-shell" ]; then
-                echo "(pure-nix) "
-            elif [ "$IN_NIX_SHELL" = "impure" ]; then
-                echo "(nix) "
-            fi
+        # Prompt: [exit] (nix) user@host path (branch*) $
+        __set_prompt() {
+          local status=$?
+          # Ignore the status left over from shell startup
+          [ -z "$__prompt_started" ] && { __prompt_started=1; status=0; }
+
+          local ps=""
+          [ "$status" -ne 0 ] && ps+="\[\e[1;31m\][$status] "
+          case "$IN_NIX_SHELL" in
+            in-pure-shell) ps+="\[\e[1;33m\](pure-nix) " ;;
+            impure)        ps+="\[\e[1;33m\](nix) " ;;
+          esac
+          ps+="\[\e[1;32m\]\u@\h\[\e[0m\] \[\e[1;34m\]\w\[\e[0m\]"
+
+          local branch dirty
+          if branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null); then
+            [ -n "$(git status --porcelain 2>/dev/null)" ] && dirty="*"
+            ps+=" \[\e[1;35m\]($branch$dirty)\[\e[0m\]"
+          fi
+
+          PS1="$ps \\$ "
         }
-
-        if [ -n "$IN_NIX_SHELL" ]; then
-          # Ensure terminal escape sequences \[\ stories \] are correctly wrapped if using colors
-          PS1="$(nix_shell_status)[\u@\h:\w]\$ "
-        fi
-
-        # Auto-start tmux inside kitty
-        if command -v tmux &>/dev/null && [ -z "$TMUX" ] && [ -n "$KITTY_PID" ]; then
-          exec tmux new-session -A -s "kitty-$KITTY_PID"
-        fi
 
         # ros2 tab completion
         _ros2_argcomplete_maybe() {
@@ -57,6 +62,13 @@
           eval "$(register-python-argcomplete ros2 2>/dev/null)"
         }
         PROMPT_COMMAND="_ros2_argcomplete_maybe''${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+        # __set_prompt goes first so it sees the last command's exit status
+        PROMPT_COMMAND="__set_prompt''${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+
+        # Auto-start tmux inside kitty
+        if command -v tmux &>/dev/null && [ -z "$TMUX" ] && [ -n "$KITTY_PID" ]; then
+          exec tmux new-session -A -s "kitty-$KITTY_PID"
+        fi
 
       '';
     };
