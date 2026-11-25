@@ -55,6 +55,7 @@
       # Tools
       pkgsUnstable.claude-code
       poppler-utils # claudes pdf handling
+      qemu
       qwen-code
       opencode
       pkgsUnstable.deepseek-harness
