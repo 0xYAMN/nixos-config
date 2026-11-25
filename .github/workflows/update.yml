@@ -15,8 +15,12 @@ jobs:
       - uses: actions/checkout@v5
       - uses: DeterminateSystems/nix-installer-action@v23
 
-      - name: nix flake update
-        run: nix flake update
+      # catppuccin is pinned: its latest rev pulls catppuccin-whiskers, which
+      # does not compile on current rustc. Update every other root input.
+      - name: nix flake update (except catppuccin)
+        run: |
+          inputs=$(jq -r '.nodes.root.inputs | keys[] | select(. != "catppuccin")' flake.lock)
+          nix flake update $inputs
 
       - name: nix flake check
         run: nix flake check -L
