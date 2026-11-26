@@ -10,5 +10,6 @@
     ./nixpkgs.nix
     ./firefox.nix
     ./webex.nix
+    ./claude.nix
   ];
 }

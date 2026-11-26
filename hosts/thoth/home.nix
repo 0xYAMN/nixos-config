@@ -48,6 +48,7 @@
   modules.spotify.enable = true;
   modules.direnv.enable = true;
   modules.webex.enable = true;
+  modules.claude.enable = true;
 
   home.stateVersion = "25.11";
 }

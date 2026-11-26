@@ -8,6 +8,7 @@
   modules.theme.enable = true;
   modules.firefox.enable = true;
   modules.bash.enable = true;
+  modules.claude.enable = true;
   modules.hyprland.enable = true;
   modules.hyprland.monitors = [
     {
