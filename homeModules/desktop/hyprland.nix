@@ -88,11 +88,13 @@
             "-- ── Input ────────────────────────────────────────────────────────────────────\n"
             + "hl.config({ input = { natural_scroll = ${lib.boolToString config.modules.hyprland.naturalScroll} } })\n\n";
 
-          monitorSection = lib.optionalString (config.modules.hyprland.monitors != [ ]) (
+          monitorFallback = ''hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })'';
+
+          monitorSection =
             "-- ── Monitors ─────────────────────────────────────────────────────────────────\n"
-            + monitorLines
+            + monitorFallback
             + "\n"
-          );
+            + lib.optionalString (config.modules.hyprland.monitors != [ ]) (monitorLines + "\n");
 
           workspaceSection = lib.optionalString (config.modules.hyprland.workspaceMonitors != [ ]) (
             "\n-- ── Workspace assignments ────────────────────────────────────────────────────\n"

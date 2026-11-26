@@ -20,9 +20,6 @@
   ];
   modules.hyprpaper.enable = true;
   modules.waybar.enable = true;
-  modules.waybar.outputs = [
-    { output = "eDP-1"; }
-  ];
   modules.rofi.enable = true;
   modules.mako.enable = true;
   modules.kitty.enable = true;

@@ -17,6 +17,7 @@
         }
       );
       default = [ ];
+      description = "Monitors to show a bar on. Empty means every monitor, including ones plugged in later.";
     };
   };
 
@@ -156,9 +157,11 @@
       {
         enable = true;
 
-        settings = map (
-          o: commonBar // { output = o.output; } // workspacesModule
-        ) config.modules.waybar.outputs;
+        settings =
+          if config.modules.waybar.outputs == [ ] then
+            [ (commonBar // workspacesModule) ]
+          else
+            map (o: commonBar // { output = o.output; } // workspacesModule) config.modules.waybar.outputs;
 
         style = builtins.readFile ./waybar.css;
       };
