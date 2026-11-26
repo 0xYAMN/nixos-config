@@ -51,6 +51,7 @@ in
       wavemon
       netcat-openbsd
       avahi
+      socat
     ];
   };
 }
